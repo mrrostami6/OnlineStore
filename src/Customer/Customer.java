@@ -18,30 +18,31 @@ public class Customer {
     }
 
     public long finalizeCart(){
-        long finaPrice = 0;
+        long finalPrice = 0;
         for (Object product : cart.getProducts()) {
             if (product.getClass().equals(Shoe.class)) {
                 ProductsList.getShoeList().removeIf(product::equals);
-                finaPrice += ((Shoe) product).getPrice();
+                finalPrice += ((Shoe) product).getPrice();
             }
             else if (product.getClass().equals(Tv.class)) {
                 ProductsList.getTvList().removeIf(product::equals);
-                finaPrice += ((Tv) product).getPrice();
+                finalPrice += ((Tv) product).getPrice();
             }
             else if (product.getClass().equals(Books.class)) {
                 ProductsList.getBookList().removeIf(product::equals);
-                finaPrice += ((Books) product).getPrice();
+                finalPrice += ((Books) product).getPrice();
             }
             else if (product.getClass().equals(Paper.class)) {
                 ProductsList.getPaperList().removeIf(product::equals);
-                finaPrice += ((Paper) product).getPrice();
+                finalPrice += ((Paper) product).getPrice();
             }
             else {
                 ProductsList.getRadioList().removeIf(product::equals);
-                finaPrice += ((Radio) product).getPrice();
+                finalPrice += ((Radio) product).getPrice();
             }
         }
-        return finaPrice;
+        cart = new Cart();
+        return finalPrice;
     }
 
     @Override
